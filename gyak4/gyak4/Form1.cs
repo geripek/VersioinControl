@@ -61,6 +61,23 @@ namespace gyak4
             }
         }
 
+        private string GetCell(int x, int y)
+        {
+            string ExcelCoordinate = "";
+            int dividend = y;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                ExcelCoordinate = Convert.ToChar(65 + modulo).ToString() + ExcelCoordinate;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+            ExcelCoordinate += x.ToString();
+
+            return ExcelCoordinate;
+        }
+
         private void CreateTable()
         {
             string[] headers = new string[]
@@ -83,13 +100,13 @@ namespace gyak4
 
             object[,] values = new object[Flats.Count, headers.Length];
 
-            int i = 0;
+            int j = 0;
             foreach (var s in Flats)
             {
-                values[i, 0] = s.Code;
-                values[i, 1] = s.Vendor;
-                values[i, 2] = s.Side;
-                values[i, 3] = s.District;
+                values[j, 0] = s.Code;
+                values[j, 1] = s.Vendor;
+                values[j, 2] = s.Side;
+                values[j, 3] = s.District;
                 if (s.Elevator)
                 {
                     values[1, 4] = "Van";
@@ -98,14 +115,17 @@ namespace gyak4
                 {
                     values[1, 4] = "Nincs";
                 }
-                values[i, 5] = s.NumberOfRooms;
-                values[i, 6] = s.FloorArea;
-                values[i, 7] = s.Price;
-                values[1, 8] = s.Price/s.FloorArea;
-                i++;
+                values[j, 5] = s.NumberOfRooms;
+                values[j, 6] = s.FloorArea;
+                values[j, 7] = s.Price;
+                values[j, 8] = "";
+                j++;
             }
 
-            
+            xlSheet.get_Range(
+             GetCell(2, 1),
+             GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
         }
+
     }
 }
