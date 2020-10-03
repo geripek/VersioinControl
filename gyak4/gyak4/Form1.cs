@@ -63,7 +63,18 @@ namespace gyak4
 
         private void CreateTable()
         {
-
+            string[] headers = new string[]
+            {
+                "Kód",
+                "Eladó",
+                "Oldal",
+                "Kerület",
+                "Lift",
+                "Szobák száma",
+                "Alapterület (m2)",
+                "Ár (mFt)",
+                "Négyzetméter ár (Ft/m2)"
+            };
         }
     }
 }
