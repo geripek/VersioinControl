@@ -17,9 +17,12 @@ namespace gyak6
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates;
+        //BindingList<string> Currencies;
         public Form1()
         {
             InitializeComponent();
+
+            //var request = new GetCurrenciesRequest();
 
             RefreshData();
         }
@@ -88,6 +91,7 @@ namespace gyak6
             Diagram();
 
             dataGridView1.DataSource = Rates;
+            //comboBox1.DataSource = Currencies;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
