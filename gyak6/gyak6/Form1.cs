@@ -15,6 +15,13 @@ namespace gyak6
         public Form1()
         {
             InitializeComponent();
+            //GetExchangeRates();
         }
+
+        /*private void GetExchangeRates()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+
+        }*/
     }
 }
