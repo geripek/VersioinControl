@@ -70,7 +70,7 @@ namespace gyak8
         {
             Factory = new BallFactory
             {
-                BallColor = button2.BackColor
+                BallColor = button3.BackColor
             };
         }
 
